@@ -151,6 +151,17 @@
         End Select
     End Sub
 
+    'Subs
+    Public Sub Battle(ByRef intHold As Integer, ByRef strParty As String, ByRef strHold As String, ByRef strState As String, ByRef strMemOne As String, ByRef strMemTwo As String, ByRef strMemThree As String, ByRef intHealthOne As Integer, ByRef intAttackOne As Integer, ByRef intHealthTwo As Integer, ByRef intAttackTwo As Integer, ByRef intHealthThree As Integer, ByRef intAttackThree As Integer, ByRef intMagicThree As Integer, ByRef strObserve As String)
+        Dim intRandom = gen.Next(1, 11)
+        Select Case intRandom
+            Case 1
+                lstDisplay.Items.Add("You encounter ")
+        End Select
+    End Sub
+
+
+
 
 
     Public Sub Code(ByRef intHold As Integer, ByRef strParty As String, ByRef strHold As String, ByRef strState As String, ByRef strMemOne As String, ByRef strMemTwo As String, ByRef strMemThree As String, ByRef intHealthOne As Integer, ByRef intAttackOne As Integer, ByRef intHealthTwo As Integer, ByRef intAttackTwo As Integer, ByRef intHealthThree As Integer, ByRef intAttackThree As Integer, ByRef intMagicThree As Integer, ByRef strObserve As String)
