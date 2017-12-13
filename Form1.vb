@@ -60,8 +60,6 @@
                 lstDisplay.Items.Add(strObserve)
             End If
 
-
-
             If strHold = "start" Then
                 lstDisplay.Items.Clear()
                 lstItems.Items.Clear()
@@ -209,6 +207,7 @@
         lstDisplay.Items.Add("You encounter a " + strMonster + "!")
         lstDisplay.Items.Add("It is " + strMemOne + "'s turn.")
     End Sub
+
     Function DeathCheck(ByVal intHealthMonster As Integer) As Boolean
         If intHealthMonster < 1 Then
             Return True
