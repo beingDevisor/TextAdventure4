@@ -13,6 +13,7 @@
     Dim intHealthTwo, intAttackTwo As Integer ' Holds the health and attack stat of Member Two
     Dim intHealthThree, intAttackThree, intMagicThree As Integer 'Holds the health, attack, and magic stat of mem3
 
+    Dim strMonster As String = "ERROR: MONSTER NAME NOT FOUND" ' Holds name of the monster
     Dim intHealthMonster, intAttackMonster As Integer ' Holds the health and attack stat of the current monster
 
     Dim strObserve As String = "Start the game before looking around. A little anxious yeah?" ' Holds the current surroundings
@@ -103,7 +104,30 @@
 
             If strState = "battle1" Then 'Party memebr 1s turn
                 If strHold = "attack" Then
-
+                    Dim intRandom As Integer = gen.Next(1, 11)
+                    If intRandom = 10 Then
+                        intHealthMonster = intHealthMonster - (intAttackOne + (intAttackOne / 2))
+                        lstDisplay.Items.Add("Critical Hit!")
+                    Else
+                        intHealthMonster = intHealthMonster - intAttackOne
+                    End If
+                    If DeathCheck(intHealthMonster) = True Then
+                        lstDisplay.Items.Add("The " + strMonster + " is defeated.")
+                        Select Case gen.Next(1, 4)
+                            Case 1
+                                intHealthOne = intHealthOne + gen.Next(1, 6)
+                                intAttackOne = intAttackOne + gen.Next(1, 3)
+                                lstDisplay.Items.Add(strMemOne + " leveled up!")
+                            Case 2
+                                intHealthTwo = intHealthTwo + gen.Next(1, 5)
+                                intAttackTwo = intAttackTwo + gen.Next(1, 3)
+                                lstDisplay.Items.Add(strMemTwo + " leveled up!")
+                            Case 3
+                                intHealthThree = intHealthThree + gen.Next(1, 5)
+                                intAttackThree = intAttackThree + gen.Next(1, 3)
+                                lstDisplay.Items.Add(strMemThree + " leveled up!")
+                        End Select
+                    End If
                 End If
             End If
 
@@ -125,7 +149,7 @@
         intHold = gen.Next(1, 5) ' Picks which room the player gets: Battle, Item, Story room, or code room.
         Select Case intHold
             Case 1
-                Battle(intHold, strParty, strHold, strState, strMemOne, strMemTwo, strMemThree, intHealthOne, intAttackOne, intHealthTwo, intAttackTwo, intHealthThree, intAttackThree, intMagicThree, strObserve, intHealthMonster, intAttackMonster)
+                Battle(intHold, strParty, strHold, strState, strMemOne, strMemTwo, strMemThree, intHealthOne, intAttackOne, intHealthTwo, intAttackTwo, intHealthThree, intAttackThree, intMagicThree, strObserve, intHealthMonster, intAttackMonster, strMonster)
                 'Create battle subs and pick a random one to call here
             Case 2
                 'Create item sub
@@ -137,9 +161,8 @@
     End Sub
 
     'Subs
-    Public Sub Battle(ByRef intHold As Integer, ByRef strParty As String, ByRef strHold As String, ByRef strState As String, ByRef strMemOne As String, ByRef strMemTwo As String, ByRef strMemThree As String, ByRef intHealthOne As Integer, ByRef intAttackOne As Integer, ByRef intHealthTwo As Integer, ByRef intAttackTwo As Integer, ByRef intHealthThree As Integer, ByRef intAttackThree As Integer, ByRef intMagicThree As Integer, ByRef strObserve As String, ByRef intHealthMonster As Integer, ByRef intAttackMonster As Integer)
+    Public Sub Battle(ByRef intHold As Integer, ByRef strParty As String, ByRef strHold As String, ByRef strState As String, ByRef strMemOne As String, ByRef strMemTwo As String, ByRef strMemThree As String, ByRef intHealthOne As Integer, ByRef intAttackOne As Integer, ByRef intHealthTwo As Integer, ByRef intAttackTwo As Integer, ByRef intHealthThree As Integer, ByRef intAttackThree As Integer, ByRef intMagicThree As Integer, ByRef strObserve As String, ByRef intHealthMonster As Integer, ByRef intAttackMonster As Integer, ByRef strMonster As String)
         Dim intRandom = gen.Next(1, 11)
-        Dim strMonster As String = "ERROR; MONSTER NAME NOT FOUND"
         strState = "battle1" 'First party member turn
         Select Case intRandom
             Case 1
@@ -186,7 +209,13 @@
         lstDisplay.Items.Add("You encounter a " + strMonster + "!")
         lstDisplay.Items.Add("It is " + strMemOne + "'s turn.")
     End Sub
-
+    Function DeathCheck(ByVal intHealthMonster As Integer) As Boolean
+        If intHealthMonster < 1 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
 
 
