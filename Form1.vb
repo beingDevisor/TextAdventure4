@@ -28,7 +28,6 @@
         MessageBox.Show("Created by Mitch Bath")
     End Sub
 
-
     Private Sub CommandsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CommandsToolStripMenuItem.Click
         MessageBox.Show("Commands" & vbCrLf & "Start - Begins a new adventure" & vbCrLf & "Observe - Returns an overview of your surroundings" & vbCrLf & "Attack - Performs a basic attack" & vbCrLf & "Defend - The party member takes reduced damage for one turn" & vbCrLf & "Spells - Only the mage can use this. Displays usable spells." & vbCrLf & "Flee - Has a chance to end the battle with no rewards" & vbCrLf & "Stats - Displays basic stats about your party" & vbCrLf & "-")
     End Sub
@@ -47,7 +46,7 @@
             lstDisplay.Items.Add("")
             lstDisplay.Items.Add(" > " & txtInput.Text)
             lstDisplay.Items.Add("")
-            'Do not edit above this line in this sub
+            'Do not edit above this line in this sub; Standard input code
 
 
             If strState = "memthreename" Then
@@ -75,7 +74,7 @@
                 lstDisplay.Items.Add("What is his name?")
                 strState = "memonename"
             End If
-            '-
+            '- ToLower is down here so that names can be uppercase above this line
             strHold = txtInput.Text.ToLower
 
 
