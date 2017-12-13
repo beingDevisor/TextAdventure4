@@ -31,6 +31,7 @@ Partial Class Form1
         Me.QuitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lstDisplay = New System.Windows.Forms.ListBox()
         Me.txtInput = New System.Windows.Forms.TextBox()
+        Me.lstItems = New System.Windows.Forms.ListBox()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -86,7 +87,7 @@ Partial Class Form1
         Me.lstDisplay.Items.AddRange(New Object() {"To begin, type 'Start' and press Enter"})
         Me.lstDisplay.Location = New System.Drawing.Point(13, 28)
         Me.lstDisplay.Name = "lstDisplay"
-        Me.lstDisplay.Size = New System.Drawing.Size(708, 342)
+        Me.lstDisplay.Size = New System.Drawing.Size(517, 342)
         Me.lstDisplay.TabIndex = 1
         '
         'txtInput
@@ -96,11 +97,20 @@ Partial Class Form1
         Me.txtInput.Size = New System.Drawing.Size(708, 20)
         Me.txtInput.TabIndex = 2
         '
+        'lstItems
+        '
+        Me.lstItems.FormattingEnabled = True
+        Me.lstItems.Location = New System.Drawing.Point(537, 28)
+        Me.lstItems.Name = "lstItems"
+        Me.lstItems.Size = New System.Drawing.Size(184, 342)
+        Me.lstItems.TabIndex = 3
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(733, 415)
+        Me.Controls.Add(Me.lstItems)
         Me.Controls.Add(Me.txtInput)
         Me.Controls.Add(Me.lstDisplay)
         Me.Controls.Add(Me.MenuStrip1)
@@ -122,4 +132,5 @@ Partial Class Form1
     Friend WithEvents QuitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents lstDisplay As ListBox
     Friend WithEvents txtInput As TextBox
+    Friend WithEvents lstItems As ListBox
 End Class
